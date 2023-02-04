@@ -3,24 +3,48 @@
     <title></title>
   </head>
   <body>
+    <div id="receipt"></div>
     <div id="totalPrice"></div>
   </body>
   <script>
     const cartArray = [
-        {
-            name:'apple',
-            price:4,
-            quantity:2
-        },
-        {
-            name:'Orange',
-            price:3,
-            quantity:3
-        }
-    ]
-    let totalPrice = 0
+      {
+        name: "apple",
+        price: 4,
+        quantity: 2,
+      },
+      {
+        name: "Orange",
+        price: 3,
+        quantity: 3,
+      },
+    ];
+    let totalPrice = 0;
     function cartTotal(objArr) {
-        array.foreach()
+      objArr.forEach(function (todo) {
+        console.log(todo);
+        totalPrice = totalPrice + todo.price * todo.quantity;
+      });
+      document.getElementById("totalPrice").innerText =
+        "Total Price: " + totalPrice;
     }
+
+    function displayReceipt(objArr) {
+      objArr.forEach(function (todo) {
+        const element = document.createElement("div");
+        totalPrice = totalPrice + todo.price * todo.quantity;
+        element.innerText =
+          todo.name +
+          " $" +
+          todo.price +
+          " * " +
+          todo.quantity +
+          " = $" +
+          totalPrice;
+        document.body.appendChild(element);
+      });
+    }
+    cartTotal(cartArray);
+    displayReceipt(cartArray);
   </script>
 </html>
