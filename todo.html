@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <title>My Todo App</title>
+  </head>
+  <body>
+    <input id="todo-title" type="text" />
+    <input id="date-picker" type="date" />
+    <button onclick="addTodo();">Press me</button>
+    <div id="todo-list"></div>
+    <script>
+      let todos = [
+        {
+          title: "Get groceries",
+          dueDate: "2021-10-04",
+        },
+        {
+          title: "Wash car",
+          dueDate: "2021-02-03",
+        },
+        {
+          title: "Make dinner",
+          dueDate: "2021-03-04",
+        },
+        {
+          title: "Do laundry",
+          dueDate: "2021-04-05",
+        },
+      ];
+
+      render();
+
+      function addTodo() {
+        let textbox = document.getElementById("todo-title");
+        let title = textbox.value;
+        const datePicker = document.getElementById("date-picker");
+        const dueDate = datePicker.value;
+        todos.push({
+          title: title,
+          duaDate: dueDate,
+        });
+        render();
+      }
+      function changeText() {
+        document.getElementById("todo-button").innerText = "Hello Rick";
+      }
+
+      function render() {
+        // reset out list
+        document.getElementById("todo-list").innerHTML = "";
+
+        todos.forEach(function (todoObj) {
+          let element = document.createElement("div");
+          element.innerText = todoObj.title + " " + todoObj.dueDate;
+          let todoList = document.getElementById("todo-list");
+          todoList.appendChild(element);
+        });
+      }
+    </script>
+  </body>
+</html>
